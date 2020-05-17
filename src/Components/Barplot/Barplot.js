@@ -1,6 +1,6 @@
 import React from 'react'
 import './Barplot.css'
-import { Container, Row, Col, Image, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form } from "react-bootstrap";
 
 
 class Barplot extends React.Component {

@@ -5,9 +5,9 @@ import './Topnav.css'
 class Topnav extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            example: false
-        }
+    }
+    gotoform=()=>{
+        window.location.pathname="/form";
     }
     render() {
         return (
@@ -19,7 +19,7 @@ class Topnav extends React.Component {
                     <a href="#" class="fa fa-linkedin"></a>
                     <a href="#" class="fa fa-youtube"></a>
                 </div>
-                <button>Attempt Syrvey</button>
+                <button onClick={this.gotoform}>Attempt Syrvey</button>
             </div>
         )
     }

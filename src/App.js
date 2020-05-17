@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import Landingpage from "./Components/Landing/Landing";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from "./Components/Form/Form";
 import PublicRoute from "./Route/Publicroute";
 import "./App.css";

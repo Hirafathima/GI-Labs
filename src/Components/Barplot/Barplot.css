@@ -11,3 +11,8 @@
     height:50vh;
     border: 1px solid black;
 }
+
+.row{
+    display: flex;
+    flex-direction: row;
+}

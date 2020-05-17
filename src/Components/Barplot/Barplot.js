@@ -13,12 +13,10 @@ class Barplot extends React.Component {
     render() {
         return (
             <div className="plot">
+                <Container>
                 <h2>Barplot</h2>
                 <Row>
-                    <Col sm={3}>
-                        <small>Choose the need:&nbsp; &nbsp; </small>
-                    </Col>
-                    <Col sm={9}>
+                        Choose the need: &nbsp; &nbsp;
                         <Form.Group>
                             <Form.Control as="select" size="sm" className="mb-0" onChange={e => this.setState({ barplot: e.target.value })}>
                                 <option value={0}>Basic Need</option>
@@ -26,10 +24,10 @@ class Barplot extends React.Component {
                                 <option value={2}>Premium Need</option>
                             </Form.Control>
                         </Form.Group>
-                    </Col>
                 </Row>
                 <Row>
                     <Col>
+                    <br/><br/>
                         {this.state.barplot == 0 ?
                             <img className="barplot" src="http://127.0.0.1:5000/barplot-basic" alt="Basic Need" />
                             : this.state.barplot == 1 ?
@@ -37,6 +35,7 @@ class Barplot extends React.Component {
                                 : <img className="barplot" src="http://127.0.0.1:5000/barplot-premium" alt="Premium Need" />
                         }</Col>
                 </Row>
+                </Container>
             </div>
         )
     }

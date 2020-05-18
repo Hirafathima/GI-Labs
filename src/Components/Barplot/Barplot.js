@@ -29,10 +29,10 @@ class Barplot extends React.Component {
                     <Col>
                     <br/><br/>
                         {this.state.barplot == 0 ?
-                            <img className="barplot" src="http://127.0.0.1:5000/barplot-basic" alt="Basic Need" />
+                            <img className="barplot" src="https://fathomless-ridge-71442.herokuapp.com/barplot-basic" alt="Basic Need" />
                             : this.state.barplot == 1 ?
-                                <img className="barplot" src="http://127.0.0.1:5000/barplot-standard" alt="Standard Need" />
-                                : <img className="barplot" src="http://127.0.0.1:5000/barplot-premium" alt="Premium Need" />
+                                <img className="barplot" src="https://fathomless-ridge-71442.herokuapp.com/barplot-standard" alt="Standard Need" />
+                                : <img className="barplot" src="https://fathomless-ridge-71442.herokuapp.com/barplot-premium" alt="Premium Need" />
                         }</Col>
                 </Row>
                 </Container>

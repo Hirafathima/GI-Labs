@@ -12,11 +12,14 @@
 
 .feedback input, textarea {
     width: 300px;
-    margin: 1rem;
+    margin-bottom: 1rem;
 }
 
 .feedback span {
     margin: 2rem;
+}
+tr{
+    text-align: center;
 }
 
 #email {

@@ -6,7 +6,6 @@ import Model from '../Model/Model'
 import Barplot from '../Barplot/Barplot'
 import About from '../About/About'
 import Feedback from '../Feedback/Feedback'
-// import Map from '../Map/Map'
 
 
 class Body extends React.Component {

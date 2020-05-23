@@ -8,7 +8,7 @@ class Barplot extends React.Component {
         super(props);
         this.state = {
             barplot: 0
-        }
+        }  
     }
     render() {
         return (

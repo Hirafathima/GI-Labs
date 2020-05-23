@@ -24,11 +24,23 @@ class Fillform extends React.Component {
 	}
 
 
-	handleSubmit(event) {
+	async handleSubmit(event) {
 		event.preventDefault();
 		console.log(this.state);
-	}
+		let userData = this.state;
+		
+		const response = await fetch("/post_survey", {
+			method: "POST",
+			headers: {
+				"Content-Type" : "application/json"
+			},
+			body: JSON.stringify(userData)
+		});
 
+		if(response.ok){
+			console.log("success, survey updated")
+		}
+	}
 
 
 	render() {
@@ -71,7 +83,7 @@ class Fillform extends React.Component {
 								<Form.Group>
 									<Form.Control
 										size="sm"
-										type="number"
+										type="text"
 										onChange={e => this.setState({ age: e.target.value })}
 									/>
 								</Form.Group>
@@ -105,7 +117,7 @@ class Fillform extends React.Component {
 									<option value="Housewife">Housewife</option>
 									<option value="Doctor">Doctor</option>
 									<option value="Student">Student</option>
-									<option value="Jobless">Jobless</option>
+									<option value="Jobless">Unemployed</option>
 								</select>
 							</Form.Group>
 						</Col>

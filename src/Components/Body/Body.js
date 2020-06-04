@@ -6,6 +6,7 @@ import Model from '../Model/Model'
 import Barplot from '../Barplot/Barplot'
 import About from '../About/About'
 import Feedback from '../Feedback/Feedback'
+import Pie from '../Pie/Pie'
 
 
 class Body extends React.Component {
@@ -19,6 +20,7 @@ class Body extends React.Component {
             <div>
                 <Intro />
                 <Model />
+                <Pie /> 
                 <Barplot />
                 <About />
                 <Feedback/>

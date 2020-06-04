@@ -25,9 +25,24 @@ class Pie extends React.Component {
                     { title: 'Six', value: 20, color: '#fc8383' },
                     { title: 'Seven', value: 20, color: '#ff1c1c' },
                 ],
-            percentage: []
+            percentage: [],
+            val: {}
         }
     }
+
+    componentDidMount(){
+        fetch("http://127.0.0.1:5000/get_dept")
+        .then(res => {
+            this.setState({
+                val : res.json
+            })
+            console.log(this.state.val)
+        })
+        .catch(err =>
+            console.log("Error: " + err )
+        )
+    }
+
     render() {
         return (
             <div className="pie">
@@ -73,6 +88,7 @@ class Pie extends React.Component {
                             ]}
                         />
                     </Col>
+                    
                 </Row>
             </div>
         );

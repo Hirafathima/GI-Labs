@@ -31,12 +31,12 @@ class Pie extends React.Component {
     }
 
     componentDidMount(){
-        fetch("http://127.0.0.1:5000/get_dept")
+        fetch("http://0.0.0.0:8000/get_dept")
         .then(res => {
             this.setState({
                 val : res.json
             })
-            console.log(this.state.val)
+            console.log(res)
         })
         .catch(err =>
             console.log("Error: " + err )

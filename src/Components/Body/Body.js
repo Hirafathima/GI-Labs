@@ -22,10 +22,8 @@ class Body extends React.Component {
                 <Model />
                 <Pie />
                 <Barplot />
-                <div className="footer-part">
-                    <About />
-                    <Feedback />
-                </div>
+                <About />
+                <Feedback />
             </div>
         )
     }

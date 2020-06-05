@@ -9,7 +9,8 @@ const style = {
         fontColor: "white",
     }
 }
-const colors = ['#fc8383', '#ff1c1c', '#ff0000', '#bd0000', '#9c0303', '#6e0101', '#4a0101'];
+const colors = ['#4e003b', '#662953', '#9a2a5c', '#cb4854', '#d1675e', '#df8165', '#e9b89c'];
+// const colors = ['#fc8383', '#ff1c1c', '#fff000', '#bd0000', '#9c0303', '#6e0101', '#4a0101'];
 class Pie extends React.Component {
     constructor(props) {
         super(props);
@@ -54,7 +55,10 @@ class Pie extends React.Component {
     render() {
         return (
             <div className="pie-container">
+                <h2>District-wise Needs Distribution</h2>
+                <br/>
                 <Row>
+                    <p>Choose the district : </p>
                     <Col sm={3} className="mb-2">
                         <select value={this.state.place} onChange={e => this.updateVal(e.target.value)}>
                             {Object.keys(this.state.val).map(district => {
@@ -85,11 +89,11 @@ class Pie extends React.Component {
                         </Row>
                         <h5>Basic Needs</h5>
                         {this.state.hovered1 !== null ?
-                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered1] }}>
+                            <large style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered1] }}>
                                 <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered1] }} /></span>
                                 &emsp;
                                 {this.state.basic[this.state.hovered1].title}
-                            </small>
+                            </large>
                             :
                             null}
                     </Col>
@@ -114,11 +118,11 @@ class Pie extends React.Component {
                         </Row>
                         <h5>Standard Needs</h5>
                         {this.state.hovered2 !== null ?
-                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered2] }}>
+                            <large style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered2] }}>
                                 <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered2] }} /></span>
                                 &emsp;
                                 {this.state.standard[this.state.hovered2].title}
-                            </small>
+                            </large>
                             :
                             null}
                     </Col>
@@ -143,11 +147,11 @@ class Pie extends React.Component {
                         </Row>
                         <h5>Premium Needs</h5>
                         {this.state.hovered3 !== null ?
-                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered3] }}>
+                            <large style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered3] }}>
                                 <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered3] }} /></span>
                                 &emsp;
                                 {this.state.premium[this.state.hovered3].title}
-                            </small>
+                            </large>
                             :
                             null}
                     </Col>

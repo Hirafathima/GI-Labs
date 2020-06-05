@@ -13,7 +13,7 @@ class Barplot extends React.Component {
 
     render() {
         return (<div className="plot" >
-            <Container >
+
                 <h2 > Barplot </h2>
                 <Row >
                     Choose the need: &nbsp; &nbsp;
@@ -49,7 +49,6 @@ class Barplot extends React.Component {
                         }
                     </Col>
                 </Row>
-            </Container>
         </div>
         )
     }

@@ -12,18 +12,20 @@ import Pie from '../Pie/Pie'
 class Body extends React.Component {
     constructor(props) {
         super(props);
-        
+
     }
-    
+
     render() {
         return (
             <div>
                 <Intro />
                 <Model />
-                <Pie /> 
+                <Pie />
                 <Barplot />
-                <About />
-                <Feedback/>
+                <div className="footer-part">
+                    <About />
+                    <Feedback />
+                </div>
             </div>
         )
     }

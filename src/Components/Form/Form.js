@@ -6,6 +6,7 @@ const styles = {
 		color: "red"
 	}
 };
+const districts = ["Trivandrum", "Kollam", "Alappuzha", "Pathanamthitta", "Kottayam", "Idukki", "Ernakulam", "Thrissur", "Palakkad", "Malappuram", "Kozhikode", "Wayanad", "Kannur", "Kasaragod"]
 
 class Fillform extends React.Component {
 	constructor(props) {
@@ -15,10 +16,10 @@ class Fillform extends React.Component {
 			age: 0,
 			district: '',
 			occupation: '',
-			basic:'',
-			standard:'',
-			premium:'',
-			serious:''
+			basic: '',
+			standard: '',
+			premium: '',
+			serious: ''
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -28,18 +29,18 @@ class Fillform extends React.Component {
 		event.preventDefault();
 		console.log(this.state);
 		let userData = this.state;
-		
 		const response = await fetch("/post_survey", {
 			method: "POST",
 			headers: {
-				"Content-Type" : "application/json"
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify(userData)
 		});
 
-		if(response.ok){
+		if (response.ok) {
 			console.log("success, survey updated")
 		}
+		window.location.pathname = "/";
 	}
 
 
@@ -97,10 +98,9 @@ class Fillform extends React.Component {
 						<Col sm={9}>
 							<Form.Group>
 								<select variant="primary" className="mb-0" onChange={e => this.setState({ district: e.target.value })}>
-									<option value="Trivandrum">Trivandrum</option>
-									<option value="Thrissur">Thrissur</option>
-									<option value="Ernakulam">Ernakulam</option>
-									<option value="Kozhikode">Kozhikode</option>
+									{districts.map(district => {
+										return <option value={district}>{district}</option>
+									})}
 								</select>
 							</Form.Group>
 						</Col>
@@ -188,7 +188,7 @@ class Fillform extends React.Component {
 					<Row>
 						<Col sm={3}>
 							<small>
-							Mention a serious public issue faced in your locality, if any.
+								Mention a serious public issue faced in your locality, if any.
 							</small>
 						</Col>
 						<Col sm={9}>

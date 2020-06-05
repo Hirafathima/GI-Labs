@@ -54,14 +54,16 @@ class Pie extends React.Component {
     render() {
         return (
             <div className="pie-container">
-                <Col sm={3} className="mb-2">
-                    <select value={this.state.place} onChange={e => this.updateVal(e.target.value)}>
-                        {Object.keys(this.state.val).map(district => {
-                            return <option value={district}>{district}</option>
-                        })}
-                    </select>
-                </Col>
-                <Row style={{ height: "70vh" }}>
+                <Row>
+                    <Col sm={3} className="mb-2">
+                        <select value={this.state.place} onChange={e => this.updateVal(e.target.value)}>
+                            {Object.keys(this.state.val).map(district => {
+                                return <option value={district}>{district}</option>
+                            })}
+                        </select>
+                    </Col>
+                </Row>
+                <Row style={{ height: "100vh" }}>
                     <Col sm={3} className="ml-5 mt-5">
                         <Row className="mb-5">
                             <PieChart
@@ -82,33 +84,33 @@ class Pie extends React.Component {
                             />
                         </Row>
                         <h5>Basic Needs</h5>
-                            {this.state.hovered1 !== null ?
-                                <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered1] }}>
-                                    <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered1] }} /></span>
+                        {this.state.hovered1 !== null ?
+                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered1] }}>
+                                <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered1] }} /></span>
                                 &emsp;
                                 {this.state.basic[this.state.hovered1].title}
-                                </small>
-                                :
-                                null}
+                            </small>
+                            :
+                            null}
                     </Col>
                     <Col sm={3} className="ml-5 mt-5">
                         <Row className="mb-5">
-                        <PieChart
-                            data={this.state.standard}
-                            animate="true"
-                            animationEasing="ease-out"
-                            lineWidth={80}
-                            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
-                            labelStyle={{
-                                ...style.pie,
-                            }}
-                            onMouseOver={(e, index) => {
-                                this.setState({ hovered2: index });
-                            }}
-                            onMouseOut={() => {
-                                this.setState({ hovered2: null });
-                            }}
-                        />
+                            <PieChart
+                                data={this.state.standard}
+                                animate="true"
+                                animationEasing="ease-out"
+                                lineWidth={80}
+                                label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                                labelStyle={{
+                                    ...style.pie,
+                                }}
+                                onMouseOver={(e, index) => {
+                                    this.setState({ hovered2: index });
+                                }}
+                                onMouseOut={() => {
+                                    this.setState({ hovered2: null });
+                                }}
+                            />
                         </Row>
                         <h5>Standard Needs</h5>
                         {this.state.hovered2 !== null ?
@@ -122,22 +124,22 @@ class Pie extends React.Component {
                     </Col>
                     <Col sm={3} className="ml-5 mt-5">
                         <Row className="mb-5">
-                        <PieChart
-                            data={this.state.premium}
-                            animate="true"
-                            animationEasing="ease-out"
-                            lineWidth={80}
-                            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
-                            labelStyle={{
-                                ...style.pie,
-                            }}
-                            onMouseOver={(e, index) => {
-                                this.setState({ hovered3: index });
-                            }}
-                            onMouseOut={() => {
-                                this.setState({ hovered3: null });
-                            }}
-                        />
+                            <PieChart
+                                data={this.state.premium}
+                                animate="true"
+                                animationEasing="ease-out"
+                                lineWidth={80}
+                                label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                                labelStyle={{
+                                    ...style.pie,
+                                }}
+                                onMouseOver={(e, index) => {
+                                    this.setState({ hovered3: index });
+                                }}
+                                onMouseOut={() => {
+                                    this.setState({ hovered3: null });
+                                }}
+                            />
                         </Row>
                         <h5>Premium Needs</h5>
                         {this.state.hovered3 !== null ?

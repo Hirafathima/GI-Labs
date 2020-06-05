@@ -1,7 +1,46 @@
-.model{
-    width: 80vw;    
+.model-container{
+    width: 100vw;
+    height:100vh;    
     margin-left: 5vw;
-    margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
+}
+
+.model{
+    margin-top: 10px;
+    display: flex;
+}
+
+.choices{
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: large;
+}
+
+.choice{
+    height:20px;
+    width: 20px;
+    border:2px solid;
+    border-radius: 50%;
+}
+
+.red{
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.blue{
+    border-color: blue;
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+.green{
+    border-color: green;
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.text-model{
+    margin:10px;
+    width:35vw;
+    margin-top: 40px;
 }

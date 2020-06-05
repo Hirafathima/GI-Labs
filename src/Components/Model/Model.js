@@ -21,9 +21,9 @@ class Model extends React.Component {
                         </div>
                         <div className="choices">
                             <span style={{ display: "flex", alignItems: "center" }}>
-                                 &emsp; Basic Needs <div className="choice red" />
-                                 &emsp; Standard Needs <div className="choice blue" />
-                                 &emsp; Premium Needs <div className="choice green" />
+                                Basic Needs &nbsp; <div className="choice red" />
+                                 &ensp; Standard Needs  &nbsp; <div className="choice blue" />
+                                 &ensp; Premium Needs  &nbsp; <div className="choice green" />
                             </span>
                         </div>
                     </div>

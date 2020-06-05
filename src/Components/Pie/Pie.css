@@ -1,13 +1,9 @@
-.pie{
+.pie-container{
     box-sizing: border-box;
-    width: 100%;    
+    width: 80%;    
     margin-left: 5vw;
     margin-bottom: 5vh;
     display: flex;
     flex-direction: column;
 }
 
-.pietext{
-    font-size: x-small;
-    color: white;
-}

@@ -2,93 +2,153 @@ import React from "react";
 import { PieChart } from 'react-minimal-pie-chart';
 import { Row, Col } from 'react-bootstrap';
 import './Pie.css'
-
+import axios from 'axios'
 const style = {
     pie: {
         fontSize: "5px",
         fontColor: "white",
     }
 }
-
+const colors = ['#fc8383', '#ff1c1c', '#ff0000', '#bd0000', '#9c0303', '#6e0101', '#4a0101'];
 class Pie extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hovered: null,
-            data:
-                [
-                    { title: 'One', value: 10, color: '#ff0000' },
-                    { title: 'Two', value: 15, color: '#bd0000' },
-                    { title: 'Three', value: 20, color: '#9c0303' },
-                    { title: 'Four', value: 10, color: '#6e0101' },
-                    { title: 'Five', value: 15, color: '#4a0101' },
-                    { title: 'Six', value: 20, color: '#fc8383' },
-                    { title: 'Seven', value: 20, color: '#ff1c1c' },
-                ],
+            hovered1: null,
+            hovered2: null,
+            hovered3: null,
             percentage: [],
-            val: {}
+            val: {},
+            basic: [],
+            standard: [],
+            premium: [],
+            place: "Trivandrum"
         }
     }
 
-    componentDidMount(){
-        fetch("http://0.0.0.0:8000/get_dept")
-        .then(res => {
-            this.setState({
-                val : res.json
-            })
-            console.log(res)
+    async componentDidMount() {
+        const res = await axios.get("https://fathomless-ridge-71442.herokuapp.com/get_dept")
+        this.setState({ val: res.data });
+        this.updateVal("Trivandrum");
+    }
+
+    updateVal = (place) => {
+        this.setState({ place: place });
+        var temp1 = [];
+        Object.entries(this.state.val[place].basic).map((val, index) => {
+            temp1.push({ title: val[0], value: val[1], color: colors[index] })
         })
-        .catch(err =>
-            console.log("Error: " + err )
-        )
+        this.setState({ basic: temp1 });
+        var temp2 = [];
+        Object.entries(this.state.val[place].Standard).map((val, index) => {
+            temp2.push({ title: val[0], value: val[1], color: colors[index] })
+        })
+        this.setState({ standard: temp2 });
+        var temp3 = [];
+        Object.entries(this.state.val[place].Premium).map((val, index) => {
+            temp3.push({ title: val[0], value: val[1], color: colors[index] })
+        })
+        this.setState({ premium: temp3 });
     }
 
     render() {
         return (
-            <div className="pie">
-                <Row className="show-grid">
-                    <Col xs={4} md={3} styles={style.pie} className="flex justify-content-center">
+            <div className="pie-container">
+                <Col sm={3} className="mb-2">
+                    <select value={this.state.place} onChange={e => this.updateVal(e.target.value)}>
+                        {Object.keys(this.state.val).map(district => {
+                            return <option value={district}>{district}</option>
+                        })}
+                    </select>
+                </Col>
+                <Row style={{ height: "70vh" }}>
+                    <Col sm={3} className="ml-5 mt-5">
+                        <Row className="mb-5">
+                            <PieChart
+                                data={this.state.basic}
+                                animate="true"
+                                animationEasing="ease-out"
+                                lineWidth={80}
+                                label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                                labelStyle={{
+                                    ...style.pie,
+                                }}
+                                onMouseOver={(e, index) => {
+                                    this.setState({ hovered1: index });
+                                }}
+                                onMouseOut={() => {
+                                    this.setState({ hovered1: null });
+                                }}
+                            />
+                        </Row>
+                        <h5>Basic Needs</h5>
+                            {this.state.hovered1 !== null ?
+                                <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered1] }}>
+                                    <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered1] }} /></span>
+                                &emsp;
+                                {this.state.basic[this.state.hovered1].title}
+                                </small>
+                                :
+                                null}
+                    </Col>
+                    <Col sm={3} className="ml-5 mt-5">
+                        <Row className="mb-5">
                         <PieChart
-                            data={this.state.data}
+                            data={this.state.standard}
                             animate="true"
                             animationEasing="ease-out"
-                            reveal={98}
                             lineWidth={80}
-                            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %` }
+                            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
                             labelStyle={{
                                 ...style.pie,
                             }}
                             onMouseOver={(e, index) => {
-                                this.setState({ hovered: index });
+                                this.setState({ hovered2: index });
                             }}
                             onMouseOut={() => {
-                                this.setState({ hovered: null });
+                                this.setState({ hovered2: null });
                             }}
                         />
-                        {this.state.hovered !== null ?
-                            <small style={{ color: this.state.data[this.state.hovered].color }}>{this.state.data[this.state.hovered].title}</small>
+                        </Row>
+                        <h5>Standard Needs</h5>
+                        {this.state.hovered2 !== null ?
+                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered2] }}>
+                                <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered2] }} /></span>
+                                &emsp;
+                                {this.state.standard[this.state.hovered2].title}
+                            </small>
                             :
-                            <small>{" "}</small>}
+                            null}
                     </Col>
-                    <Col xs={4} md={3}>
+                    <Col sm={3} className="ml-5 mt-5">
+                        <Row className="mb-5">
                         <PieChart
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' },
-                                { title: 'Three', value: 20, color: '#6A2135' },
-                            ]}
+                            data={this.state.premium}
+                            animate="true"
+                            animationEasing="ease-out"
+                            lineWidth={80}
+                            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)} %`}
+                            labelStyle={{
+                                ...style.pie,
+                            }}
+                            onMouseOver={(e, index) => {
+                                this.setState({ hovered3: index });
+                            }}
+                            onMouseOut={() => {
+                                this.setState({ hovered3: null });
+                            }}
                         />
+                        </Row>
+                        <h5>Premium Needs</h5>
+                        {this.state.hovered3 !== null ?
+                            <small style={{ display: "flex", alignItems: "center", color: colors[this.state.hovered3] }}>
+                                <span><div style={{ width: "10px", height: "10px", backgroundColor: colors[this.state.hovered3] }} /></span>
+                                &emsp;
+                                {this.state.premium[this.state.hovered3].title}
+                            </small>
+                            :
+                            null}
                     </Col>
-                    <Col xs={4} md={3}>
-                        <PieChart
-                            data={[
-                                { title: 'One', value: 10, color: '#E38627' },
-                                { title: 'Two', value: 15, color: '#C13C37' },
-                                { title: 'Three', value: 20, color: '#6A2135' },
-                            ]}
-                        />
-                    </Col>
-                    
                 </Row>
             </div>
         );

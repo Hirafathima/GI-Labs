@@ -17,18 +17,15 @@ class Barplot extends React.Component {
                 <h2 > Barplot </h2>
                 <Row >
                     Choose the need: &nbsp; &nbsp;
-                        <Form.Group >
-                        <Form.Control
-                            as="select"
-                            size="sm"
-                            className="mb-0"
-                            onChange={e => this.setState({ barplot: e.target.value })}
-                        >
-                            < option value={0} > Basic Need </option>
-                            <option value={1} > Standard Need </option>
-                            <option value={2} > Premium Need </option>
-                        </Form.Control>
-                    </Form.Group>
+                        <select
+                        size="sm"
+                        className="mb-0"
+                        onChange={e => this.setState({ barplot: e.target.value })}
+                    >
+                        <option value={0} > Basic Need </option>
+                        <option value={1} > Standard Need </option>
+                        <option value={2} > Premium Need </option>
+                    </select>
                 </Row>
                 <Row >
                     <Col >

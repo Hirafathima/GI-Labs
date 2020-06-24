@@ -1,6 +1,6 @@
 import React from 'react'
 import './About.css'
-import Img from '../../Assets/Images/abt.jpg'
+import Img from '../../Assets/Images/govt.jpg'
 
 
 class About extends React.Component{

@@ -19,7 +19,7 @@ class Topnav extends React.Component {
                     <a href="#" class="fa fa-linkedin"></a>
                     <a href="#" class="fa fa-youtube"></a>
                 </div>
-                <button onClick={this.gotoform}>Attempt Syrvey</button>
+                <button onClick={this.gotoform}>Attempt Survey</button>
             </div>
         )
     }

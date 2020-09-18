@@ -15,23 +15,22 @@ class Fillform extends React.Component {
 		this.state = {
 			name: '',
 			age: 0,
-			district: '',
-			occupation: '',
-			basic: '',
-			standard: '',
-			premium: '',
-			serious: ''
+			district: 'Trivandrum',
+			occupation: 'Teacher',
+			basic: 'Primary School',
+			standard: 'Public Library',
+			premium: 'Gym',
+			serious: 'Stray dogs'
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
-
 
 	async handleSubmit(event) {
 		event.preventDefault();
 		
 		let userData = this.state;
 		console.log(userData)
-		axios.post(`https://jsonbox.io/box_dfa254b2d858c368398e/data`, userData)
+		axios.post(`https://jsonbox.io/box_de8dc85dd983aa1882e2/data`, userData)
       	// .then(res => {
         // 	console.log(res);
         // 	console.log(res.data);
@@ -50,7 +49,7 @@ class Fillform extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get(`https://jsonbox.io/box_dfa254b2d858c368398e`)
+		axios.get(`https://jsonbox.io/box_de8dc85dd983aa1882e2`)
 		  .then(res => {
 			console.log(res.data)
 		  })
@@ -82,7 +81,7 @@ class Fillform extends React.Component {
   						</Form.Group>
 						  <Form.Group>
 						<Form.Label>District</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ district: e.target.value })}>
+							<Form.Control as="select" value={this.state.district} onChange={e => this.setState({ district: e.target.value })}>
 								{districts.map(district => {
 										return <option value={district}>{district}</option>
 									})}
@@ -90,7 +89,7 @@ class Fillform extends React.Component {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Occupation</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ occupation: e.target.value })}>
+							<Form.Control as="select" value={this.state.occupation} onChange={e => this.setState({ occupation: e.target.value })}>
 								<option value="Teacher">Teacher</option>
 								<option value="Engineer">Engineer</option>
 								<option value="Housewife">Housewife</option>
@@ -102,7 +101,7 @@ class Fillform extends React.Component {
 						
 						<Form.Group>
 							<Form.Label>Basic need</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ basic: e.target.value })}>
+							<Form.Control as="select" value={this.state.basic} onChange={e => this.setState({ basic: e.target.value })}>
 								<option value="Primary school">Primary school</option>
 									<option value="Public toilet">Public toilet</option>
 									<option value="Streetlight">Streetlight</option>
@@ -114,7 +113,7 @@ class Fillform extends React.Component {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Standard need</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ standard: e.target.value })}>
+							<Form.Control as="select" value={this.state.standard} onChange={e => this.setState({ standard: e.target.value })}>
 							<option value="Public Library">Public Library</option>
 									<option value="Taxi service">Taxi service</option>
 									<option value="Public park & playgrounds">Public park & playgrounds</option>
@@ -126,7 +125,7 @@ class Fillform extends React.Component {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Premium need</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ premium: e.target.value })}>
+							<Form.Control as="select" value={this.state.premium} onChange={e => this.setState({ premium: e.target.value })}>
 							<option value="Gym">Gym</option>
 									<option value="Theatre">Theatre</option>
 									<option value="Tourist Resorts">Tourist Resorts</option>
@@ -138,7 +137,7 @@ class Fillform extends React.Component {
 						</Form.Group>
 						<Form.Group>
 							<Form.Label>Mention a serious issue faced in your locality(if any)</Form.Label>
-							<Form.Control as="select" onChange={e => this.setState({ serious: e.target.value })}>
+							<Form.Control as="select" value={this.state.serious} onChange={e => this.setState({ serious: e.target.value })}>
 							<option value="Stray dogs">Stray dogs</option>
 									<option value="Theft attacks">Theft attacks</option>
 									<option value="Broken sewage">Broken sewage</option>

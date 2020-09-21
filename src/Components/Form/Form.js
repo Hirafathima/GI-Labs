@@ -25,29 +25,45 @@ class Fillform extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
-	async handleSubmit(event) {
-		event.preventDefault();
+	// async handleSubmit(event) {
+	// 	event.preventDefault();
 		
-		let userData = this.state;
-		console.log(userData)
-		axios.post(`https://jsonbox.io/box_de8dc85dd983aa1882e2/data`, userData)
-      	// .then(res => {
-        // 	console.log(res);
-        // 	console.log(res.data);
-      	// })
-		// const response = await fetch("/post_survey", {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json"
-		// 	},
-		// 	body: JSON.stringify(userData)
-		// });
+	// 	let userData = this.state;
+	// 	console.log(userData)
+	// 	axios.delete(`https://jsonbox.io/box_de8dc85dd983aa1882e2/5f64fabae857d0001764a6b1`)
+    //   	// .then(res => {
+    //     // 	console.log(res);
+    //     // 	console.log(res.data);
+    //   	// })
+	// 	// const response = await fetch("/post_survey", {
+	// 	// 	method: "POST",
+	// 	// 	headers: {
+	// 	// 		"Content-Type": "application/json"
+	// 	// 	},
+	// 	// 	body: JSON.stringify(userData)
+	// 	// });
 
-		// if (response.ok) {
-		// 	console.log("success, survey updated")
-		// }
+	// 	// if (response.ok) {
+	// 	// 	console.log("success, survey updated")
+	// 	// }
+	// }
+
+	handleSubmit = (e) => {
+		//const userData = this.state;
+		const id = '5f64e64ee857d0001764a516';
+        const url = `https://jsonbox.io/box_de8dc85dd983aa1882e2/`;
+        // const id = document.querySelectorAll("li").props['data-id'];
+		e.preventDefault();
+		
+        axios.delete(url + id)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
 	}
-
+	
 	componentDidMount() {
 		axios.get(`https://jsonbox.io/box_de8dc85dd983aa1882e2`)
 		  .then(res => {
